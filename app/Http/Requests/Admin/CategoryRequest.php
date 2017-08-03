@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Request;
+use App\Models\Category;
 
 class CategoryRequest extends Request
 {
@@ -33,5 +34,14 @@ class CategoryRequest extends Request
     public function validate()
     {
         $this->rulesValidate();
+    }
+
+    public function validateParent()
+    {
+        $exists = Category::where('id', $this->get('parent_id'))->where('parent_id', '<>', 0)->exists();
+
+        if (!$exists) {
+            $this->failed('父分类不存在!');
+        }
     }
 }

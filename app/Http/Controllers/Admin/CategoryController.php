@@ -9,18 +9,30 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.category.index', [
-            'data' => Category::paginate(10),
+        $categories = Category::where('parent_id', 0)->with('subCategory')->get();
 
+        return view('admin.category.index', [
+            'data' => $categories,
         ]);
     }
 
     public function create()
     {
+        $parentCategories = Category::where('parent_id', 0)->pluck('display_name', 'id')->toArray();
 
+        return view('admin.category.form', [
+            'parentCategories' => $parentCategories,
+        ]);
     }
 
     public function store(CategoryRequest $request)
+    {
+        Category::create($request->all());
+
+        return redirect()->route('admin.category.index');
+    }
+
+    public function edit(Category $category)
     {
 
     }
@@ -30,13 +42,10 @@ class CategoryController extends Controller
 
     }
 
-    public function edit()
+    public function destroy(Category $category)
     {
+        $category->delete();
 
-    }
-
-    public function destroy()
-    {
-
+        return back();
     }
 }
