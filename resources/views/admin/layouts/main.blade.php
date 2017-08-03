@@ -2,6 +2,7 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('vendor/bootstrap/cerulean/bootstrap.min.css') }}">
+  @parent
 @endsection
 
 @section('body')

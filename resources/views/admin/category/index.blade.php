@@ -10,13 +10,13 @@
       <a href="{{ route('admin.category.create') }}" class="btn btn-info">新增</a>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-vertical-align-middle">
       <thead>
       <tr>
-        <th>#</th>
+        <th width="150">#</th>
         <th>标识名称</th>
         <th>显示名称</th>
-        <th>排序</th>
+        <th width="100">排序</th>
         <th width="140">操作</th>
       </tr>
       </thead>
@@ -26,15 +26,21 @@
             <td>{{ $item->id }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->display_name }}</td>
-            <td>{{ $item->order }}</td>
             <td>
-              <a href="{{ route('admin.category.edit', ['id' => $item->getKey()]) }}" class="btn btn-sm btn-primary">编辑</a>
-              <button class="btn btn-sm btn-danger" data-action="destroy"
+              <input type="text" value="{{ $item->order }}" class="form-control">
+            </td>
+            <td>
+              <a href="{{ route('admin.category.edit', ['id' => $item->getKey()]) }}" class="btn btn-primary">编辑</a>
+              <button class="btn btn-danger" data-action="destroy"
                       data-href="{{ route('admin.category.destroy', ['id' => $item->getKey()]) }}">删除</button>
             </td>
           </tr>
         @endforeach
       </tbody>
     </table>
+
+    <div class="pagination">
+      {{ $data->links() }}
+    </div>
   </div>
 @endsection
