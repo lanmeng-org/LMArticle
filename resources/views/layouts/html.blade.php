@@ -11,25 +11,21 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no">
   @show
+
   <title>@yield('title')</title>
 
-  @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-  @show
-
-  <script src="{{ asset('js/viewport.js') }}"></script>
+  @yield('styles')
 </head>
 
-<body class="@yield('body-class') page-{{ str_replace('/', '-', Request::path()) }}">
+<body class="@yield('body-class')">
   @yield('header')
   @yield('body')
   @yield('layers')
   @yield('footer')
 
   @section('scripts')
-    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('vendor/jquery/jquery-1.9.1.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <script>
       $.ajaxSetup({
