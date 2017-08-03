@@ -13,8 +13,11 @@
 
     <div class="collapse navbar-collapse" id="admin-nav-collapse">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li>
           <a href="{{ route('admin.dashboard') }}">仪表盘</a>
+        </li>
+        <li>
+          <a href="{{ route('admin.category.index') }}">分类管理</a>
         </li>
       </ul>
 
@@ -27,7 +30,9 @@
           <ul class="dropdown-menu">
             <li><a href="#">修改资料</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">退出登录</a></li>
+            <li>
+              <a href="{{ route('logout') }}">退出登录</a>
+            </li>
           </ul>
         </li>
       </ul>

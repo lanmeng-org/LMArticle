@@ -14,14 +14,13 @@
 
   <title>@yield('title')</title>
 
-  @yield('styles')
+  @section('styles')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  @endsection
 </head>
 
 <body class="@yield('body-class')">
-  @yield('header')
   @yield('body')
-  @yield('layers')
-  @yield('footer')
 
   @section('scripts')
     <script src="{{ asset('vendor/jquery/jquery-1.9.1.min.js') }}"></script>
