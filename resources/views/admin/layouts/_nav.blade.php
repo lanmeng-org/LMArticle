@@ -22,6 +22,9 @@
         <li>
           <a href="{{ route('admin.article.index') }}">文章管理</a>
         </li>
+        <li>
+          <a href="{{ route('admin.notice.index') }}">公告管理</a>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
