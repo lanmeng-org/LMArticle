@@ -11,5 +11,7 @@ Route::group([
     'middleware' => 'auth'
 ], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+
+    Route::post('category/sort', 'CategoryController@sort')->name('category.sort');
     Route::resource('category', 'CategoryController');
 });

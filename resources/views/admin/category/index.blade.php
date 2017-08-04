@@ -6,11 +6,13 @@
 
 @section('content')
   <div class="row">
+    {{ Form::open([ 'route' => 'admin.category.sort' ]) }}
     <div class="pull-right">
-      <a href="{{ route('admin.category.create') }}" class="btn btn-info">新增</a>
+      <a href="{{ route('admin.category.create') }}" class="btn btn-info">新增分类</a>
+      <button class="btn btn-primary">更新排序</button>
     </div>
 
-    <table class="table table-vertical-align-middle">
+    <table class="table table-condensed table-vertical-align-middle">
       <thead>
       <tr>
         <th>显示名称</th>
@@ -21,38 +23,14 @@
       </thead>
       <tbody>
         @foreach($data as $item)
-          <tr class="active">
-            <td>{{ $item->display_name }}</td>
-            <td>{{ $item->name }}</td>
-            <td>
-              <input value="{{ $item->order }}" class="form-control">
-            </td>
-            <td>
-              <a href="{{ route('admin.category.edit', ['id' => $item->getKey()]) }}" class="btn btn-link">编辑</a>
-              <button class="btn btn-link" data-action="destroy"
-                      data-href="{{ route('admin.category.destroy', ['id' => $item->getKey()]) }}">删除</button>
-            </td>
-          </tr>
+          @include('admin.category.item', ['item' => $item, 'topCategory' => true])
 
-          @foreach($item->subCategory as $category)
-            <tr>
-              <td>
-                {{ $category->display_name }}
-              </td>
-              <td>{{ $category->name }}</td>
-              <td>
-                <input value="{{ $category->order }}" class="form-control">
-              </td>
-              <td>
-                <a href="{{ route('admin.category.edit', ['id' => $category->getKey()]) }}" class="btn btn-link">编辑</a>
-                <button class="btn btn-link" data-action="destroy"
-                        data-href="{{ route('admin.category.destroy', ['id' => $category->getKey()]) }}">删除</button>
-              </td>
-            </tr>
+          @foreach($item->childCategory as $category)
+            @include('admin.category.item', ['item' => $category])
           @endforeach
-
         @endforeach
       </tbody>
     </table>
+    {{ Form::close() }}
   </div>
 @endsection

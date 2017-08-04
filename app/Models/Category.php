@@ -10,7 +10,7 @@ class Category extends Model
         'name', 'display_name', 'order', 'parent_id',
     ];
 
-    public function subCategory()
+    public function childCategory()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }

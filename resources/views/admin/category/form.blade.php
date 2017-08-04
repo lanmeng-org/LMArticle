@@ -45,10 +45,14 @@
 
   <div class="form-group">
     <label for="parent_id">父分类</label>
-    {{ Form::select('parent_id', ['顶级分类'] + $parentCategories, null, [
-      'class' => 'form-control',
-      'id' => 'parent_id'
-    ]) }}
+    @if($data->childCategory)
+      <input value="顶级分类" class="form-control" disabled>
+    @else
+      {{ Form::select('parent_id', ['顶级分类'] + $parentCategories, null, [
+        'class' => 'form-control',
+        'id' => 'parent_id'
+      ]) }}
+    @endif
   </div>
 
   <div class="box-footer text-center">
