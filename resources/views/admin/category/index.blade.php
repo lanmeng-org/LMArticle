@@ -25,7 +25,7 @@
             <td>{{ $item->display_name }}</td>
             <td>{{ $item->name }}</td>
             <td>
-              <input type="text" value="{{ $item->order }}" class="form-control">
+              <input value="{{ $item->order }}" class="form-control">
             </td>
             <td>
               <a href="{{ route('admin.category.edit', ['id' => $item->getKey()]) }}" class="btn btn-link">编辑</a>
@@ -36,12 +36,12 @@
 
           @foreach($item->subCategory as $category)
             <tr>
-              <td>&nbsp;&nbsp;&nbsp;&nbsp;
+              <td>
                 {{ $category->display_name }}
               </td>
               <td>{{ $category->name }}</td>
               <td>
-                <input type="text" value="{{ $category->order }}" class="form-control">
+                <input value="{{ $category->order }}" class="form-control">
               </td>
               <td>
                 <a href="{{ route('admin.category.edit', ['id' => $category->getKey()]) }}" class="btn btn-link">编辑</a>

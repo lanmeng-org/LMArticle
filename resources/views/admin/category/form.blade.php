@@ -21,7 +21,8 @@
     <label for="name">标识名称</label>
     {{ Form::text('name', null, [
       'class' => 'form-control',
-      'id' => 'name'
+      'id' => 'name',
+      'placeholder' => '用作分类的路径或其它',
     ]) }}
   </div>
 
@@ -29,7 +30,8 @@
     <label for="display_name">显示名称</label>
     {{ Form::text('display_name', null, [
       'class' => 'form-control',
-      'id' => 'display_name'
+      'id' => 'display_name',
+      'placeholder' => '分类具体显示的名称',
     ]) }}
   </div>
 
