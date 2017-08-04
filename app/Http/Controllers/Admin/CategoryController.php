@@ -77,7 +77,7 @@ class CategoryController extends Controller
 
     public function sort(CategorySortRequest $request)
     {
-        $orders = $request->get('order', []);
+        $orders = $request->get('orders', []);
 
         foreach ($orders as $key => $order) {
             Category::where('id', $key)->update([

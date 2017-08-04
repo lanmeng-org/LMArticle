@@ -18,15 +18,6 @@
   @include('widgets.tips')
 
   <div class="form-group">
-    <label for="name">标识名称</label>
-    {{ Form::text('name', null, [
-      'class' => 'form-control',
-      'id' => 'name',
-      'placeholder' => '用作分类的路径或其它',
-    ]) }}
-  </div>
-
-  <div class="form-group">
     <label for="display_name">显示名称</label>
     {{ Form::text('display_name', null, [
       'class' => 'form-control',
@@ -36,8 +27,17 @@
   </div>
 
   <div class="form-group">
+    <label for="name">标识名称</label>
+    {{ Form::text('name', null, [
+      'class' => 'form-control',
+      'id' => 'name',
+      'placeholder' => '用作分类的路径或其它',
+    ]) }}
+  </div>
+
+  <div class="form-group">
     <label for="order">排序</label>
-    {{ Form::number('order', 0, [
+    {{ Form::number('order', null, [
       'class' => 'form-control',
       'id' => 'order'
     ]) }}
@@ -45,7 +45,7 @@
 
   <div class="form-group">
     <label for="parent_id">父分类</label>
-    @if($data->childCategory)
+    @if(isset($data) && $data->childCategory)
       <input value="顶级分类" class="form-control" disabled>
     @else
       {{ Form::select('parent_id', ['顶级分类'] + $parentCategories, null, [

@@ -7,10 +7,12 @@
 @section('content')
   <div class="row">
     {{ Form::open([ 'route' => 'admin.category.sort' ]) }}
-    <div class="pull-right">
+    <div class="pull-right clearfix">
       <a href="{{ route('admin.category.create') }}" class="btn btn-info">新增分类</a>
       <button class="btn btn-primary">更新排序</button>
     </div>
+
+    @include('widgets.tips')
 
     <table class="table table-condensed table-vertical-align-middle">
       <thead>

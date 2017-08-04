@@ -12,6 +12,7 @@ class CategoryRequest extends Request
         return [
             'name' => 'required|min:1',
             'display_name' => 'required|min:1',
+            'order' => 'required',
         ];
     }
 
@@ -20,6 +21,7 @@ class CategoryRequest extends Request
         return [
             'name' => '标识名称',
             'display_name' => '显示名称',
+            'order' => '排序',
         ];
     }
 
@@ -34,11 +36,19 @@ class CategoryRequest extends Request
     public function validate()
     {
         $this->rulesValidate();
+
+        $this->validateParent();
     }
 
     public function validateParent()
     {
-        $exists = Category::where('id', $this->get('parent_id'))->where('parent_id', '<>', 0)->exists();
+        $parentId = $this->get('parent_id');
+
+        if (empty($parentId)) {
+            return;
+        }
+
+        $exists = Category::where('id', $parentId)->where('parent_id', '<>', 0)->exists();
 
         if (!$exists) {
             $this->failed('父分类不存在!');

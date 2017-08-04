@@ -5,7 +5,7 @@
   </td>
   <td>{{ $item->name }}</td>
   <td>
-    <input value="{{ $item->order }}" class="form-control" name="order[{{ $item->getKey() }}]">
+    <input value="{{ $item->order }}" class="form-control" name="orders[{{ $item->getKey() }}]">
   </td>
   <td>
     <a href="{{ route('admin.category.edit', ['id' => $item->getKey()]) }}" class="btn btn-link">编辑</a>

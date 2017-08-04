@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'name' => 'Qiu5',
+    'name' => '天下球迷网',
     'admin_path' => '/admin',
 ];
