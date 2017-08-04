@@ -10,7 +10,7 @@
 
 @section('content')
   @if(isset($data))
-    {{ Form::model($data, ['route' => ['admin.category.update', $data->id], 'method' => 'put']) }}
+    {{ Form::model($data, ['route' => ['admin.category.update', $data->getKey()], 'method' => 'put']) }}
   @else
     {{ Form::open(['route' => 'admin.category.store', 'method' => 'post']) }}
   @endif
