@@ -13,7 +13,7 @@
 
     <div class="collapse navbar-collapse" id="admin-nav-collapse">
       <ul class="nav navbar-nav">
-        @foreach($topCategories as $category)
+        @foreach($categories->where('show_nav', 1) as $category)
           <li>
             <a href="{{ url("category/{$category->id}") }}">{{ $category->display_name }}</a>
           </li>
