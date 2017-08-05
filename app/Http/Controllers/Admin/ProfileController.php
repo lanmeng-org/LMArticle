@@ -15,14 +15,21 @@ class ProfileController extends Controller
 
     public function update(ProfileRequest $request)
     {
-        \Auth::user()->update([
+        $data = [
             'name'     => $request->get('name'),
             'email'    => $request->get('email'),
-            'password' => bcrypt($request->get('newPassword')),
-        ]);
+        ];
 
-        session()->flush('tips.success', '修改成功');
+        if ($request->has('password')) {
+            $data += [
+                'password' => bcrypt($request->get('password'))
+            ];
+        }
 
-        return redirect()->route('admin.profile.edit');
+        \Auth::user()->update($data);
+
+        session()->flash('tips.success', '修改成功');
+
+        return back();
     }
 }

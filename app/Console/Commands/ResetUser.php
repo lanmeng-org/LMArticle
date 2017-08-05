@@ -5,21 +5,21 @@ namespace App\Console\Commands;
 use App\Models\User;
 use Illuminate\Console\Command;
 
-class AddUser extends Command
+class ResetUser extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'user:add {name} {password} {email}';
+    protected $signature = 'user:reset {id} {password}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '添加一个用户';
+    protected $description = '重置用户密码';
 
 
     /**
@@ -29,18 +29,19 @@ class AddUser extends Command
      */
     public function handle()
     {
-        $name = $this->argument('name');
+        $user = User::find($this->argument('id'));
         $password = $this->argument('password');
-        $email = $this->argument('email');
+
+        if (empty($user)) {
+            $this->error('输入的用户ID不存在');
+        }
 
         try {
-            User::create([
-                'name'     => $name,
-                'password' => bcrypt($password),
-                'email'    => $email,
+            $user->update([
+                'password' => bcrypt($password)
             ]);
 
-            $this->info('添加成功');
+            $this->info('重置成功');
         } catch (\Exception $exception) {
             $this->error($exception->getMessage());
         }

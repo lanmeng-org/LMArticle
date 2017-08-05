@@ -4,17 +4,28 @@ namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Request;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 class ProfileRequest extends Request
 {
     public function rules()
     {
-        return [
+        $rules =  [
             'name'        => 'required|min:1',
-            'email'       => 'required|email',
+            'email'       => [
+                'required', 'email',
+                Rule::unique('users')->ignore(\Auth::id(), 'id'),
+            ],
             'oldPassword' => 'required',
-            'password'    => 'min:6|confirmed',
         ];
+
+        if ($this->has('password')) {
+            $rules += [
+                'password' => 'min:6|confirmed',
+            ];
+        }
+
+        return $rules;
     }
 
     public function attributes()
