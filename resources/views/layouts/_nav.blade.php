@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav">
         @foreach($categories->where('show_nav', 1) as $category)
           <li>
-            <a href="{{ url("category/{$category->id}") }}">{{ $category->display_name }}</a>
+            <a href="{{ \App\Repositories\CategoryRepo::generateUrl($category) }}">{{ $category->display_name }}</a>
           </li>
         @endforeach
       </ul>
