@@ -12,12 +12,12 @@ class ArticleRepo extends Repository
         return Article::class;
     }
 
-    public static function getList($category, $number = null)
+    public static function getList($category = null, $number = null)
     {
         return self::articleQueryForCategory($category)->take($number)->get();
     }
 
-    public static function getHotList($category, $number = null)
+    public static function getHotList($category = null, $number = null)
     {
         return self::articleQueryForCategory($category)
             ->orderBy('view_number', 'desc')

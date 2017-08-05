@@ -25,28 +25,7 @@
     </div>
 
     <div class="col-md-3">
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          更多推荐
-        </div>
-        <div class="list-group">
-          <a href="" class="list-group-item">
-            大大大大大大大大大大大
-          </a>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          热门资源
-        </div>
-        <div class="list-group">
-          <a href="" class="list-group-item">
-            大大大大大大大大大大大
-          </a>
-        </div>
-      </div>
+      @include('article._right_articles')
     </div>
   </div>
 
