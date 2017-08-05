@@ -24,6 +24,18 @@ class SettingController extends Controller
             }
         }, ARRAY_FILTER_USE_KEY);
 
+        $insertArr = [];
 
+        foreach ($data as $key => $item) {
+            $insertArr[] = [
+                'key' => $key,
+                'content' => $item,
+            ];
+        }
+
+        \DB::table('settings')->delete();
+        \DB::table('settings')->insert($insertArr);
+
+        return back();
     }
 }
