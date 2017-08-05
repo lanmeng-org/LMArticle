@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Article;
+use App\Models\Category;
 
 class ArticleRepo extends Repository
 {
@@ -11,8 +12,20 @@ class ArticleRepo extends Repository
         return Article::class;
     }
 
-    public static function getList($number)
+    public static function getList(Category $category, $number = null)
     {
-        return Article::take($number)->get();
+        if (empty($number)) {
+            $number = (int)SettingRepo::getItemContent('article_list_number');
+        }
+
+        $categoryIds = [
+            $category->getKey(),
+        ];
+
+        if (!$category->childCategory->isEmpty()) {
+            $categoryIds = array_merge($categoryIds, $category->childCategory->pluck('id'));
+        }
+
+        return Article::whereIn('category_id', $categoryIds)->take($number)->get();
     }
 }

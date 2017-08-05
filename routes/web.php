@@ -23,3 +23,5 @@ Route::group([
 
 
 Route::get('/', 'HomeController@index');
+Route::get('category/{category}', 'CategoryController@show');
+Route::resource('article', 'ArticleController', ['only' => ['show']]);

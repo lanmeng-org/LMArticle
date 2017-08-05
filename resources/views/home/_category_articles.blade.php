@@ -8,8 +8,14 @@
         </div>
       </div>
       <div class="list-group">
-        @foreach(\App\Repositories\ArticleRepo::getList(5) as $item)
-          <a href="{{ url('') }}" class="list-group-item">{{ $item->title }}</a>
+        <?php
+        $categoryArticleNumber = \App\Repositories\SettingRepo::getItemContent('home_category_article_number');
+        $currCategoryArticles = \App\Repositories\ArticleRepo::getList($category);
+        ?>
+        @foreach(\App\Repositories\ArticleRepo::getList($category, $categoryArticleNumber) as $item)
+          <a href="{{ route('article.show', ['id' => $item->getKey()]) }}" class="list-group-item">
+            {{ $item->title }}
+          </a>
         @endforeach
       </div>
     </div>
