@@ -16,8 +16,8 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         \Auth::user()->update([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
+            'name'     => $request->get('name'),
+            'email'    => $request->get('email'),
             'password' => bcrypt($request->get('newPassword')),
         ]);
 
