@@ -12,10 +12,27 @@ class ArticleRepo extends Repository
         return Article::class;
     }
 
-    public static function getList(Category $category, $number = null)
+    public static function getList($category, $number = null)
+    {
+        return self::articleQueryForCategory($category)->take($number)->get();
+    }
+
+    public static function getHotList($category, $number = null)
+    {
+        return self::articleQueryForCategory($category)
+            ->orderBy('view_number', 'desc')
+            ->take($number)
+            ->get();
+    }
+
+    protected static function articleQueryForCategory($category, $number = null)
     {
         if (empty($number)) {
             $number = (int)setting('article_list_number');
+        }
+
+        if (!$category instanceof Category) {
+            return Article::take($number);
         }
 
         $categoryIds = [
@@ -26,6 +43,6 @@ class ArticleRepo extends Repository
             $categoryIds = array_merge($categoryIds, $category->childCategory->pluck('id')->toArray());
         }
 
-        return Article::whereIn('category_id', $categoryIds)->take($number)->get();
+        return Article::whereIn('category_id', $categoryIds)->take($number);
     }
 }
