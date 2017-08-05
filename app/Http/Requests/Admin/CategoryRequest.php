@@ -4,18 +4,31 @@ namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Request;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 class CategoryRequest extends Request
 {
     public function rules()
     {
-        return [
+        $rules =  [
             'name'         => 'required|min:1|unique:categories,name',
             'display_name' => 'required|min:1',
             'order'        => 'required',
             'show_home'    => 'required',
             'show_column'  => 'required|integer|max:12',
         ];
+
+        if ($this->isMethod('put')) {
+            $category = $this->route('category');
+
+            $rules['name'] = [
+                'required',
+                'min:1',
+                Rule::unique('categories')->ignore($category->getKey(), 'id')
+            ];
+        }
+
+        return $rules;
     }
 
     public function attributes()

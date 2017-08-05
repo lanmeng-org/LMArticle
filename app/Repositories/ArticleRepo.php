@@ -23,7 +23,7 @@ class ArticleRepo extends Repository
         ];
 
         if (!$category->childCategory->isEmpty()) {
-            $categoryIds = array_merge($categoryIds, $category->childCategory->pluck('id'));
+            $categoryIds = array_merge($categoryIds, $category->childCategory->pluck('id')->toArray());
         }
 
         return Article::whereIn('category_id', $categoryIds)->take($number)->get();
