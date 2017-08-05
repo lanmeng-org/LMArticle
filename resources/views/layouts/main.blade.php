@@ -12,6 +12,8 @@
   <div class="container">
     @yield('content')
   </div>
+
+  @include('layouts.footer')
 @endsection
 
 @section('scripts')

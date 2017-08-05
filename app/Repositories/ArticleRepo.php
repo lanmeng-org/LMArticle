@@ -15,7 +15,7 @@ class ArticleRepo extends Repository
     public static function getList(Category $category, $number = null)
     {
         if (empty($number)) {
-            $number = (int)SettingRepo::getItemContent('article_list_number');
+            $number = (int)setting('article_list_number');
         }
 
         $categoryIds = [

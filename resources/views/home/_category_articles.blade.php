@@ -9,7 +9,7 @@
       </div>
       <div class="list-group">
         <?php
-        $categoryArticleNumber = \App\Repositories\SettingRepo::getItemContent('home_category_article_number');
+        $categoryArticleNumber = setting('home_category_article_number');
         $currCategoryArticles = \App\Repositories\ArticleRepo::getList($category);
         ?>
         @foreach(\App\Repositories\ArticleRepo::getList($category, $categoryArticleNumber) as $item)

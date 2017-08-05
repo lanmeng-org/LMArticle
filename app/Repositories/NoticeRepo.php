@@ -14,7 +14,7 @@ class NoticeRepo extends Repository
     public static function getList($number = null)
     {
         if (empty($number)) {
-            $number = (int)SettingRepo::getItemContent('notice_show_number');
+            $number = (int)setting('notice_show_number');
         }
 
         return Notice::take($number)->get();

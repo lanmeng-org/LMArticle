@@ -10,6 +10,16 @@
   @include('widgets.tips')
 
   <div class="form-group">
+    <label for="site_name" class="col-sm-2 control-label">网站名称</label>
+    <div class="col-sm-10">
+      {{ Form::text('site_name', null, [
+        'id' => 'site_name',
+        'class' => 'form-control',
+      ]) }}
+    </div>
+  </div>
+
+  <div class="form-group">
     <label for="notice_show_home" class="col-sm-2 control-label">首页显示公告</label>
     <div class="col-sm-10">
     {{ Form::select('notice_show_home', ['隐藏', '显示'], null, [
@@ -22,7 +32,7 @@
   <div class="form-group">
     <label for="notice_show_number" class="col-sm-2 control-label">公告显示数量</label>
     <div class="col-sm-10">
-    {{ Form::text('notice_show_number', null, [
+    {{ Form::number('notice_show_number', null, [
       'id' => 'notice_show_number',
       'class' => 'form-control',
     ]) }}

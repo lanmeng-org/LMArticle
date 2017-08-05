@@ -1,4 +1,4 @@
-@if(\App\Repositories\SettingRepo::getItemContent('notice_show_home'))
+@if(setting('notice_show_home'))
   <div class="col-md-12">
     <div class="panel panel-primary">
       <div class="panel-heading">公告</div>

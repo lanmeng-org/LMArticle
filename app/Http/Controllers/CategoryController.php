@@ -10,7 +10,7 @@ class CategoryController extends BaseController
 {
     public function show($category)
     {
-        $urlType = SettingRepo::getItemContent('category_url_type');
+        $urlType = setting('category_url_type');
 
         if ($urlType == Category::URL_TYPE_NAME) {
             $category = Category::where('name', $category)->first();
@@ -22,7 +22,7 @@ class CategoryController extends BaseController
             abort(404);
         }
 
-        $articleNumber = SettingRepo::getItemContent('article_list_number');
+        $articleNumber = setting('article_list_number');
         $articles = Article::where('category_id', $category->getKey())->paginate($articleNumber);
 
         return view('category.show', [

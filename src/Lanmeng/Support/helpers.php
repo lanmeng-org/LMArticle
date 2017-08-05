@@ -17,3 +17,10 @@ if (!function_exists('isMobile')) {
         return false;
     }
 }
+
+if (!function_exists('setting')) {
+    function setting($key)
+    {
+        return \App\Repositories\SettingRepo::getItemContent($key);
+    }
+}
