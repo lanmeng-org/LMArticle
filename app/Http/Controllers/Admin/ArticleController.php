@@ -26,7 +26,9 @@ class ArticleController extends Controller
 
     public function store(ArticleRequest $request)
     {
-        Article::create($request->all());
+        $data = $request->all();
+        $data['position'] = array_sum($data['position']);
+        Article::create($data);
 
         return redirect()->route('admin.article.index');
     }
@@ -41,7 +43,9 @@ class ArticleController extends Controller
 
     public function update(Article $article, ArticleRequest $request)
     {
-        $article->update($request->all());
+        $data = $request->all();
+        $data['position'] = array_sum($data['position']);
+        $article->update($data);
 
         return redirect()->route('admin.article.index');
     }

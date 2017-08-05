@@ -13,6 +13,7 @@ class ArticleRequest extends Request
             'title'       => 'required|min:1',
             'category_id' => 'required',
             'content'     => 'required',
+            'position'    => 'array',
         ];
     }
 
@@ -22,6 +23,7 @@ class ArticleRequest extends Request
             'title'       => '标题',
             'category_id' => '分类',
             'content'     => '内容',
+            'position'    => '推荐',
         ];
     }
 

@@ -19,4 +19,20 @@
 @section('scripts')
   @parent
   <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+  <script>
+    var container = $('body>.container');
+    var resize = function () {
+      var height = $(window).height()
+        - $('body>nav.navbar').outerHeight(true)
+        - $('body>footer').outerHeight(true);
+
+      container.css({
+        'min-height': height
+      });
+    };
+
+    resize();
+    $(window).resize(resize);
+  </script>
 @endsection

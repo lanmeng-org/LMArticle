@@ -34,6 +34,15 @@
   </div>
 
   <div class="form-group">
+    <label for="category_id">推荐</label>
+    <div>
+      <input type="checkbox" name="position[]" value="1" class="iCheck"> 文章页推荐
+      <input type="checkbox" name="position[]" value="2" class="iCheck"> 栏目页推荐
+      <input type="checkbox" name="position[]" value="4" class="iCheck"> 全站页推荐
+    </div>
+  </div>
+
+  <div class="form-group">
     <label for="content">内容</label>
     {{ Form::textarea('content', null, [
       'class' => 'form-control',

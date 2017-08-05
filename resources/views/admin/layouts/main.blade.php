@@ -36,6 +36,8 @@
       </div>
     </div>
   </div>
+
+  @include('admin.layouts._footer')
 @endsection
 
 @section('scripts')
@@ -50,6 +52,20 @@
         $resourceDestroyBox.find('.destroy-form').attr('action', $(this).attr('data-href'));
         $resourceDestroyBox.modal();
       });
+
+      var container = $('body>.container');
+      var resize = function () {
+        var height = $(window).height()
+          - $('body>nav.navbar').outerHeight(true)
+          - $('body>footer').outerHeight(true);
+
+        container.css({
+          'min-height': height
+        });
+      };
+
+      resize();
+      $(window).resize(resize);
     });
   </script>
 @endsection
