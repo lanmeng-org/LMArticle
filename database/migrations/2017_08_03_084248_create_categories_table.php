@@ -22,6 +22,9 @@ class CreateCategoriesTable extends Migration
             $table->boolean('show_home')->default(0)->comment('是否显示到首页');
             $table->tinyInteger('show_column')->default(12)->comment('显示到首页所占用的大小, 最大12');
 
+            $table->index('order');
+            $table->index('parent_id');
+            $table->index('show_home');
             $table->timestamps();
         });
     }
