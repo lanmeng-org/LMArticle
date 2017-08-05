@@ -2,7 +2,7 @@
   <label for="site_name" class="col-sm-2 control-label">可用变量</label>
   <div class="col-sm-10">
     <p>
-      <span class="text-danger">{$site.name$}</span> 表示网站名称, 只可在首页使用
+      <span class="text-danger">{$site.name$}</span> 表示网站名称, 可在所有页面显示
     </p>
     <p>
       <span class="text-danger">{$category.display_name$}</span> 表示栏目名称, 只可在栏目页使用

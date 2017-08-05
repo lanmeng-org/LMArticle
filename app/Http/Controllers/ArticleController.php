@@ -29,7 +29,17 @@ class ArticleController extends BaseController
         ];
 
         $arr =array_map(function ($value) use ($article) {
-            return str_replace('{$article.title$}', $article->title, $value);
+            return str_replace(
+                [
+                    '{$article.title$}',
+                    '{$site.name$}',
+                ],
+                [
+                    $article->title,
+                    setting('site_name'),
+                ],
+                $value
+            );
         }, $arr);
 
         return $arr;

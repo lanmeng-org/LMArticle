@@ -45,7 +45,17 @@ class CategoryController extends BaseController
         ];
 
         $arr =array_map(function ($value) use ($category) {
-            return str_replace('{$category.display_name$}', $category->display_name, $value);
+            return str_replace(
+                [
+                    '{$category.display_name$}',
+                    '{$site.name$}',
+                ],
+                [
+                    $category->display_name,
+                    setting('site_name'),
+                ],
+                $value
+            );
         }, $arr);
 
         return $arr;
