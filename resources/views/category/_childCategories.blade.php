@@ -1,4 +1,4 @@
-@if($category->childCategory)
+@if(!$category->childCategory->isEmpty())
   <div class="panel panel-success">
     <div class="panel-heading">
       子分类

@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+  {{ $title }}
+@endsection
+
 @section('content')
   @include('category._breadcrumb')
 

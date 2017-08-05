@@ -24,10 +24,12 @@ class CategoryController extends BaseController
 
         $articleNumber = setting('article_list_number');
         $articles = Article::where('category_id', $category->getKey())->paginate($articleNumber);
+        $title = str_replace('{$category.display_name$}', $category->display_name, setting('site_title_category'));
 
         return view('category.show', [
             'category' => $category,
             'articles' => $articles,
+            'title' => $title,
         ]);
     }
 }
