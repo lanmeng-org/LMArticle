@@ -4,10 +4,9 @@
       子分类
     </div>
 
-    <div class="panel-body">
+    <div class="list-group child-categories">
       @foreach($category->childCategory as $item)
-        <a href="{{ \App\Repositories\CategoryRepo::generateUrl($item) }}"
-           class="btn btn-default">
+        <a href="{{ \App\Repositories\CategoryRepo::generateUrl($item) }}" class="list-group-item">
           {{ $item->display_name }}
         </a>
       @endforeach
