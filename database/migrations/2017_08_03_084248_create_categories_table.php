@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('parent_id')->default(0)->comment('父级ID');
             $table->integer('order')->default(0)->comment('排序');
             $table->boolean('show_home')->default(0)->comment('是否显示到首页');
-            $table->tinyInteger('show_col')->default(12)->comment('显示到首页所占用的大小, 最大12');
+            $table->tinyInteger('show_column')->default(12)->comment('显示到首页所占用的大小, 最大12');
 
             $table->timestamps();
         });

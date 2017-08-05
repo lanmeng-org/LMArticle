@@ -10,18 +10,22 @@ class CategoryRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:1',
+            'name'         => 'required|min:1',
             'display_name' => 'required|min:1',
-            'order' => 'required',
+            'order'        => 'required',
+            'show_home'    => 'required',
+            'show_column'  => 'required|integer|max:11',
         ];
     }
 
     public function attributes()
     {
         return [
-            'name' => '标识名称',
+            'name'         => '标识名称',
             'display_name' => '显示名称',
-            'order' => '排序',
+            'order'        => '排序',
+            'show_home'    => '是否在首页显示',
+            'show_column'  => '首页显示大小',
         ];
     }
 

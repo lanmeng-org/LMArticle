@@ -10,10 +10,10 @@
   @include('widgets.tips')
 
   <div class="form-group">
-    <label for="notice_show_index" class="col-sm-2 control-label">首页显示公告</label>
+    <label for="notice_show_home" class="col-sm-2 control-label">首页显示公告</label>
     <div class="col-sm-10">
-    {{ Form::select('notice_show_index', ['隐藏', '显示'], null, [
-      'id' => 'notice_show_index',
+    {{ Form::select('notice_show_home', ['隐藏', '显示'], null, [
+      'id' => 'notice_show_home',
       'class' => 'form-control',
     ]) }}
     </div>

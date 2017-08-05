@@ -36,16 +36,8 @@
   </div>
 
   <div class="form-group">
-    <label for="order">排序</label>
-    {{ Form::number('order', null, [
-      'class' => 'form-control',
-      'id' => 'order'
-    ]) }}
-  </div>
-
-  <div class="form-group">
     <label for="parent_id">父分类</label>
-    @if(isset($data) && $data->childCategory)
+    @if(isset($data) && !$data->childCategory->isEmpty())
       <input value="顶级分类" class="form-control" disabled>
     @else
       {{ Form::select('parent_id', ['顶级分类'] + $parentCategories, null, [
@@ -53,6 +45,30 @@
         'id' => 'parent_id'
       ]) }}
     @endif
+  </div>
+
+  <div class="form-group">
+    <label for="order">排序</label>
+    {{ Form::number('order', isset($data) ? null : 0, [
+      'class' => 'form-control',
+      'id' => 'order'
+    ]) }}
+  </div>
+
+  <div class="form-group">
+    <label for="show_home">是否在首页显示</label>
+    {{ Form::select('show_home', ['否', '是'], null, [
+      'class' => 'form-control',
+      'id' => 'show_home'
+    ]) }}
+  </div>
+
+  <div class="form-group">
+    <label for="show_column">首页显示大小</label>
+    {{ Form::select('show_column', config('site.column_list'), null, [
+      'class' => 'form-control',
+      'id' => 'show_column',
+    ]) }}
   </div>
 
   <div class="box-footer text-center">
