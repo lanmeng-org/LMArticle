@@ -3,16 +3,7 @@
 @section('content')
   <div class="row">
 
-    <div class="col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">公告</div>
-        <div class="list-group">
-          @foreach(\App\Repositories\NoticeRepo::getList(3) as $item)
-            <a href="{{ url('') }}" class="list-group-item">{{ $item->title }}</a>
-          @endforeach
-        </div>
-      </div>
-    </div>
+    @include('home.notices')
 
     <div class="col-md-12">
       <div class="panel panel-default">

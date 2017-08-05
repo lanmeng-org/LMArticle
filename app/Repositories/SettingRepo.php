@@ -15,4 +15,11 @@ class SettingRepo extends Repository
     {
         return Setting::where('key', $key)->first();
     }
+
+    public static function getItemContent($key)
+    {
+        $setting = self::getItem($key);
+
+        return $setting ? $setting->content : null;
+    }
 }
