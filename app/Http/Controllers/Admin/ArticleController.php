@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::paginate(20);
+        $articles = Article::orderBy('created_at', 'desc')->paginate(20);
 
         return view('admin.article.index', [
             'data' => $articles,
