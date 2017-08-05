@@ -36,9 +36,9 @@
   <div class="form-group">
     <label for="category_id">推荐</label>
     <div>
-      <input type="checkbox" name="position[]" value="1" class="iCheck"> 文章页推荐
-      <input type="checkbox" name="position[]" value="2" class="iCheck"> 栏目页推荐
-      <input type="checkbox" name="position[]" value="4" class="iCheck"> 全站页推荐
+      <input type="checkbox" name="position[]" value="1" class="iCheck">&nbsp; 文章页推荐 &nbsp;
+      <input type="checkbox" name="position[]" value="2" class="iCheck">&nbsp; 栏目页推荐 &nbsp;
+      <input type="checkbox" name="position[]" value="4" class="iCheck">&nbsp; 全站页推荐 &nbsp;
     </div>
   </div>
 
@@ -57,11 +57,24 @@
   {{ Form::close() }}
 @endsection
 
+@section('styles')
+  @parent
+  <link rel="stylesheet" href="{{ asset('vendor/icheck/skins/square/blue.css') }}">
+@endsection
+
 @section('scripts')
   @parent
+  <script src="{{ asset('vendor/icheck/icheck.js') }}"></script>
+
   <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
   <script src="{{ asset('vendor/ckeditor/config.js') }}"></script>
   <script>
+    $('input.iCheck').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+
     CKEDITOR.replace('content', {
       height: '400px'
     })
