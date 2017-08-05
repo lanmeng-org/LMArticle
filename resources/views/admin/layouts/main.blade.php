@@ -9,7 +9,9 @@
   @include('admin.layouts._nav')
 
   <div class="container">
-    <h2 class="page-header">@yield('title')</h2>
+    @section('pageHeader')
+      <h2 class="page-header">@yield('title')</h2>
+    @show
 
     @yield('content')
   </div>

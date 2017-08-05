@@ -4,6 +4,12 @@
   {{ $title }}
 @endsection
 
+@section('metas')
+  @parent
+  <meta name="keywords" content="{{ $key }}" />
+  <meta name="description" content="{{ $description }}" />
+@endsection
+
 @section('content')
   <div class="row">
     @include('home._notices')

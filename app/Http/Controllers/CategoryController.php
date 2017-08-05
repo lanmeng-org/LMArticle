@@ -24,12 +24,30 @@ class CategoryController extends BaseController
 
         $articleNumber = setting('article_list_number');
         $articles = Article::where('category_id', $category->getKey())->paginate($articleNumber);
-        $title = str_replace('{$category.display_name$}', $category->display_name, setting('site_title_category'));
 
-        return view('category.show', [
+        $data = [
             'category' => $category,
             'articles' => $articles,
-            'title' => $title,
-        ]);
+        ] + $this->getSeoArr($category);
+
+        return view('category.show', $data);
+    }
+
+    /**
+     * Seo 标题 关键词 内容
+     */
+    protected function getSeoArr(Category $category)
+    {
+        $arr = [
+            'title'       => setting('site_title_category'),
+            'key'         => setting('site_key_category'),
+            'description' => setting('site_description_category'),
+        ];
+
+        $arr =array_map(function ($value) use ($category) {
+            return str_replace('{$category.display_name$}', $category->display_name, $value);
+        }, $arr);
+
+        return $arr;
     }
 }
