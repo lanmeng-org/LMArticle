@@ -1,5 +1,5 @@
 @foreach($categoryArticles as $category)
-  <div class="col-md-12">
+  <div class="col-md-{{ $category->show_column }}">
     <div class="panel panel-default">
       <div class="panel-heading">
         {{ $category->display_name }}

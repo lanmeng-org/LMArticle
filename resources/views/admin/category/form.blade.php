@@ -56,6 +56,14 @@
   </div>
 
   <div class="form-group">
+    <label for="show_nav">是否在导航显示</label>
+    {{ Form::select('show_nav', ['否', '是'], null, [
+      'class' => 'form-control',
+      'id' => 'show_nav'
+    ]) }}
+  </div>
+
+  <div class="form-group">
     <label for="show_home">是否在首页显示</label>
     {{ Form::select('show_home', ['否', '是'], null, [
       'class' => 'form-control',

@@ -14,7 +14,7 @@ class CategoryRequest extends Request
             'display_name' => 'required|min:1',
             'order'        => 'required',
             'show_home'    => 'required',
-            'show_column'  => 'required|integer|max:11',
+            'show_column'  => 'required|integer|max:12',
         ];
     }
 
