@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->boolean('show_nav')->default(0)->comment('是否显示到导航');
             $table->boolean('show_home')->default(0)->comment('是否显示到首页');
             $table->tinyInteger('show_column')->default(12)->comment('显示到首页所占用的大小, 最大12');
+            $table->tinyInteger('show_column_color')->default(0)->comment('显示分类时标题背景色');
 
             $table->index('order');
             $table->index('parent_id');

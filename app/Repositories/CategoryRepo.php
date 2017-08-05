@@ -21,4 +21,16 @@ class CategoryRepo extends Repository
 
         return url("category/{$category->getKey()}");
     }
+
+    public static function getHomeColumnCss(Category $category)
+    {
+        $css = [
+            Category::SHOW_COLUMN_COLOR_DEFAULT => 'default',
+            Category::SHOW_COLUMN_COLOR_PRIMARY => 'primary',
+            Category::SHOW_COLUMN_COLOR_SUCCESS => 'success',
+            Category::SHOW_COLUMN_COLOR_WARNING => 'waring',
+        ];
+
+        return $css[$category->show_column_color];
+    }
 }

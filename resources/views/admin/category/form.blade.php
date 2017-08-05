@@ -71,12 +71,22 @@
     ]) }}
   </div>
 
-  <div class="form-group">
-    <label for="show_column">首页显示大小</label>
-    {{ Form::select('show_column', config('site.column_list'), null, [
-      'class' => 'form-control',
-      'id' => 'show_column',
-    ]) }}
+  <div class="show_home_child" style="padding-left: 1rem;display: none;">
+    <div class="form-group">
+      <label for="show_column">显示大小</label>
+      {{ Form::select('show_column', config('site.column_list'), null, [
+        'class' => 'form-control',
+        'id' => 'show_column',
+      ]) }}
+    </div>
+
+    <div class="form-group">
+      <label for="show_column_color">标题背景色</label>
+      {{ Form::select('show_column_color', \App\Models\Category::$showColumnColors, null, [
+        'class' => 'form-control',
+        'id' => 'show_column_color',
+      ]) }}
+    </div>
   </div>
 
   <div class="box-footer text-center">
@@ -84,4 +94,23 @@
     <button type="submit" class="btn btn-success">提交</button>
   </div>
   {{ Form::close() }}
+@endsection
+
+@section('scripts')
+  @parent
+  <script>
+    function showHomeChild() {
+      if (parseInt($('#show_home').val())) {
+        $('.show_home_child').show();
+      } else {
+        $('.show_home_child').hide();
+      }
+    }
+
+    showHomeChild();
+    $('#show_home').change(function () {
+      showHomeChild();
+    });
+
+  </script>
 @endsection

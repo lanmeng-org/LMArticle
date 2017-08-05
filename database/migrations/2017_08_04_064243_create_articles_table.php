@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->integer('category_id')->comment('所属分类ID');
             $table->text('content')->comment('文章内容');
             $table->integer('view_number')->default(0)->comment('浏览次数');
+            $table->integer('position')->default(0)->comment('推荐位 1:文章页推荐 2:栏目页推荐 4:全站推荐');
 
             $table->timestamps();
         });

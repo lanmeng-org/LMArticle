@@ -8,8 +8,14 @@
   max-width: 100%;
 }
 
+.panel-primary .view-more a,
+.panel-success .view-more a,
+.panel-warning .view-more a {
+  color: #fff;
+}
+
 footer {
-  margin-top: 5rem;
+  margin-top: 2rem;
   padding-top: 1rem;
   border-top: 1px solid #e2e2e2;
 }

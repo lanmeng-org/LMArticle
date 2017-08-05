@@ -14,9 +14,21 @@ class Category extends Model
         self::URL_TYPE_NAME => '标识',
     ];
 
+    const SHOW_COLUMN_COLOR_DEFAULT = 0;
+    const SHOW_COLUMN_COLOR_PRIMARY = 1;
+    const SHOW_COLUMN_COLOR_SUCCESS = 2;
+    const SHOW_COLUMN_COLOR_WARNING = 3;
+
+    public static $showColumnColors = [
+        self::SHOW_COLUMN_COLOR_DEFAULT => '默认',
+        self::SHOW_COLUMN_COLOR_PRIMARY => '蓝色',
+        self::SHOW_COLUMN_COLOR_SUCCESS => '绿色',
+        self::SHOW_COLUMN_COLOR_WARNING => '红色',
+    ];
+
     protected $fillable = [
         'name', 'display_name', 'parent_id', 'order',
-        'show_home', 'show_column', 'show_nav',
+        'show_home', 'show_column', 'show_nav', 'show_column_color',
     ];
 
     public function childCategory()
