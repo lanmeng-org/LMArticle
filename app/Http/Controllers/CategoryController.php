@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Category;
-use App\Repositories\ArticleRepo;
 use App\Repositories\SettingRepo;
 
 class CategoryController extends BaseController
@@ -22,7 +22,8 @@ class CategoryController extends BaseController
             abort(404);
         }
 
-        $articles = ArticleRepo::getList($category);
+        $articleNumber = SettingRepo::getItemContent('article_list_number');
+        $articles = Article::where('category_id', $category->getKey())->paginate($articleNumber);
 
         return view('category.show', [
             'category' => $category,

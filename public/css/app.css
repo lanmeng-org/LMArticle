@@ -2,6 +2,10 @@ table.table-vertical-align-middle > tbody > tr > td {
   vertical-align: middle;
 }
 
+.clearfix {
+  clear: both;
+}
+
 @media (max-width: 960px) {
   .container {
     width: 100%;
