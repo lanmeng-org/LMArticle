@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Lanmeng\Qiu5\SeoUtils;
 
 class ArticleController extends BaseController
 {
@@ -10,38 +11,15 @@ class ArticleController extends BaseController
     {
         $article->increment('view_number');
         $data = [
-                'article'  => $article,
-                'category' => $article->category,
-            ] + $this->getSeoArr($article);
+            'article'  => $article,
+            'category' => $article->category,
+        ]
+        + SeoUtils::getSeoArr(
+            'article',
+            ['{$article.title$}'],
+            [$article->title]
+        );
 
         return view('article.show', $data);
-    }
-
-    /**
-     * Seo 标题 关键词 内容
-     */
-    protected function getSeoArr(Article $article)
-    {
-        $arr = [
-            'title'       => setting('site_title_article'),
-            'key'         => setting('site_key_article'),
-            'description' => setting('site_description_article'),
-        ];
-
-        $arr =array_map(function ($value) use ($article) {
-            return str_replace(
-                [
-                    '{$article.title$}',
-                    '{$site.name$}',
-                ],
-                [
-                    $article->title,
-                    setting('site_name'),
-                ],
-                $value
-            );
-        }, $arr);
-
-        return $arr;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use App\Repositories\SettingRepo;
+use Lanmeng\Qiu5\SeoUtils;
 
 class CategoryController extends BaseController
 {
@@ -22,42 +23,17 @@ class CategoryController extends BaseController
             abort(404);
         }
 
-        $articleNumber = setting('article_list_number');
-        $articles = Article::where('category_id', $category->getKey())->paginate($articleNumber);
+        $articles = Article::orderBy('created_at', 'desc')
+            ->where('category_id', $category->getKey())
+            ->paginate(setting('article_list_number'));
 
-        $data = [
-            'category' => $category,
-            'articles' => $articles,
-        ] + $this->getSeoArr($category);
+        $data = compact('articles', 'category')
+            + SeoUtils::getSeoArr(
+                'category',
+                ['{$category.display_name$}'],
+                [$category->display_name]
+            );
 
         return view('category.show', $data);
-    }
-
-    /**
-     * Seo 标题 关键词 内容
-     */
-    protected function getSeoArr(Category $category)
-    {
-        $arr = [
-            'title'       => setting('site_title_category'),
-            'key'         => setting('site_key_category'),
-            'description' => setting('site_description_category'),
-        ];
-
-        $arr =array_map(function ($value) use ($category) {
-            return str_replace(
-                [
-                    '{$category.display_name$}',
-                    '{$site.name$}',
-                ],
-                [
-                    $category->display_name,
-                    setting('site_name'),
-                ],
-                $value
-            );
-        }, $arr);
-
-        return $arr;
     }
 }

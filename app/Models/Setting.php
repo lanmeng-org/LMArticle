@@ -17,6 +17,8 @@ class Setting extends Model
         'site_title_home', 'site_key_home', 'site_description_home',
         'site_title_category', 'site_key_category', 'site_description_category',
         'site_title_article', 'site_key_article', 'site_description_article',
+        'site_title_notice', 'site_key_notice', 'site_description_notice',
+        'site_title_notice_list', 'site_key_notice_list', 'site_description_notice_list',
     ];
 
     public function contentArray()

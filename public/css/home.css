@@ -14,3 +14,11 @@
   color: #fff;
 }
 
+.article-title {
+  margin-top: 0;
+}
+
+.article-title h1 {
+  margin-top: 0;
+}
+

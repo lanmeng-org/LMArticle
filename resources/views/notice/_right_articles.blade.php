@@ -3,7 +3,7 @@
     小编推荐
   </div>
   <div class="list-group">
-    @foreach(\App\Repositories\ArticleRepo::getPositionList([4,2,1], $category) as $item)
+    @foreach(\App\Repositories\ArticleRepo::getPositionList([4,2,1]) as $item)
       <a href="{{ route('article.show', ['id' => $item->getKey()]) }}" class="list-group-item">
         {{ $item->title }}
       </a>
@@ -16,7 +16,7 @@
     热门资源
   </div>
   <div class="list-group">
-    @foreach(\App\Repositories\ArticleRepo::getHotList($article->category) as $item)
+    @foreach(\App\Repositories\ArticleRepo::getHotList() as $item)
       <a href="{{ route('article.show', ['id' => $item->getKey()]) }}" class="list-group-item">
         {{ $item->title }}
       </a>

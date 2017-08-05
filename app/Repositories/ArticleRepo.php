@@ -37,12 +37,14 @@ class ArticleRepo extends Repository
 
     protected static function articleQueryForCategory($category, $number = null)
     {
+        $query = Article::orderBy('created_at', 'desc');
+
         if (empty($number)) {
             $number = (int)setting('right_article_number');
         }
 
         if (!$category instanceof Category) {
-            return Article::take($number);
+            return $query->take($number);
         }
 
         $categoryIds = [
@@ -53,6 +55,6 @@ class ArticleRepo extends Repository
             $categoryIds = array_merge($categoryIds, $category->childCategory->pluck('id')->toArray());
         }
 
-        return Article::whereIn('category_id', $categoryIds)->take($number);
+        return $query->whereIn('category_id', $categoryIds)->take($number);
     }
 }
