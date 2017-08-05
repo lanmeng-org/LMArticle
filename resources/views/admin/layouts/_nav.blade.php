@@ -37,7 +37,9 @@
           </a>
 
           <ul class="dropdown-menu">
-            <li><a href="#">修改资料</a></li>
+            <li>
+              <a href="{{ route('admin.profile.edit') }}">修改资料</a>
+            </li>
             <li role="separator" class="divider"></li>
             <li>
               <a href="{{ route('logout') }}">退出登录</a>

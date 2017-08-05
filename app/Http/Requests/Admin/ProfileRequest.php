@@ -10,19 +10,21 @@ class ProfileRequest extends Request
     public function rules()
     {
         return [
-            'name'     => 'required|min:1',
-            'email'    => 'required|email',
-            'password' => 'required',
+            'name'        => 'required|min:1',
+            'email'       => 'required|email',
+            'oldPassword' => 'required',
+            'password'    => 'min:6|confirmed',
         ];
     }
 
     public function attributes()
     {
         return [
-            'name'     => '用户名',
-            'email'    => '邮箱',
-            'password' => '原密码',
-            'newPassword' => '原密码',
+            'name'                  => '用户名',
+            'email'                 => '邮箱',
+            'oldPassword'           => '原密码',
+            'password'              => '新密码',
+            'password_confirmation' => '确认新密码',
         ];
     }
 
@@ -42,12 +44,10 @@ class ProfileRequest extends Request
 
     protected function validatePassword()
     {
-        $user = \Auth::user();
-        $password = $this->get('password');
+        $auth = \Auth::attempt(['id' => \Auth::id(), 'password' => $this->get('oldPassword')]);
 
-        \Auth::attempt([
-            'email' => $user->email,
-            'password' => $password,
-        ]);
+        if (!$auth) {
+            $this->failed('原密码不正确');
+        }
     }
 }

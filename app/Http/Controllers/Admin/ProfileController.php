@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\NoticeRequest;
-use App\Models\Notice;
+use App\Http\Requests\Admin\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -14,10 +13,16 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function update(Notice $notice, NoticeRequest $request)
+    public function update(ProfileRequest $request)
     {
-        $notice->update($request->all());
+        \Auth::user()->update([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('newPassword')),
+        ]);
 
-        return redirect()->route('admin.notice.index');
+        session()->flush('tips.success', '修改成功');
+
+        return redirect()->route('admin.profile.edit');
     }
 }

@@ -30,7 +30,6 @@
   </div>
 
   <div class="box-footer text-center">
-    <a href="{{ route('admin.setting.update') }}" class="btn btn-default">取消</a> &nbsp;
     <button type="submit" class="btn btn-success">提交</button>
   </div>
   {{ Form::close() }}

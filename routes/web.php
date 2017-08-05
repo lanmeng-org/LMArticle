@@ -19,6 +19,9 @@ Route::group([
 
     Route::get('setting', 'SettingController@edit')->name('setting.edit');
     Route::post('setting', 'SettingController@update')->name('setting.update');
+
+    Route::get('profile', 'ProfileController@edit')->name('profile.edit');
+    Route::post('profile', 'ProfileController@update')->name('profile.update');
 });
 
 
