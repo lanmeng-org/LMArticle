@@ -49,6 +49,16 @@
 </div>
 
 <div class="form-group">
+  <label for="right_article_number" class="col-sm-2 control-label">侧边栏文章数量</label>
+  <div class="col-sm-10">
+    {{ Form::text('right_article_number', null, [
+      'id' => 'right_article_number',
+      'class' => 'form-control',
+    ]) }}
+  </div>
+</div>
+
+<div class="form-group">
   <label for="category_url_type" class="col-sm-2 control-label">分类URL类型</label>
   <div class="col-sm-10">
     {{ Form::select('category_url_type', \App\Models\Category::$urlTypes, null, [

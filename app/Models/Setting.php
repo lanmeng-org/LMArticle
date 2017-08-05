@@ -13,7 +13,7 @@ class Setting extends Model
 
     public static $whiteList = [
         'notice_show_home', 'notice_show_number', 'category_url_type', 'article_list_number',
-        'home_category_article_number', 'site_name', 'footer_content',
+        'home_category_article_number', 'site_name', 'footer_content', 'right_article_number',
         'site_title_home', 'site_key_home', 'site_description_home',
         'site_title_category', 'site_key_category', 'site_description_category',
         'site_title_article', 'site_key_article', 'site_description_article',

@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-md-3">
-      @include('category._childCategories')
+      @include('category._right')
     </div>
   </div>
 @endsection

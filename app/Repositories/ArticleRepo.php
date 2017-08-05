@@ -14,21 +14,31 @@ class ArticleRepo extends Repository
 
     public static function getList($category = null, $number = null)
     {
-        return self::articleQueryForCategory($category)->take($number)->get();
+        return self::articleQueryForCategory($category, $number)->get();
     }
 
     public static function getHotList($category = null, $number = null)
     {
-        return self::articleQueryForCategory($category)
+        return self::articleQueryForCategory($category, $number)
             ->orderBy('view_number', 'desc')
-            ->take($number)
             ->get();
+    }
+
+    public static function getPositionList($positions = [], $category = null, $number = null)
+    {
+        $query = self::articleQueryForCategory($category, $number);
+
+        foreach ($positions as $position) {
+            $query->where('position', '&', $position);
+        }
+
+        return $query->get();
     }
 
     protected static function articleQueryForCategory($category, $number = null)
     {
         if (empty($number)) {
-            $number = (int)setting('article_list_number');
+            $number = (int)setting('right_article_number');
         }
 
         if (!$category instanceof Category) {
