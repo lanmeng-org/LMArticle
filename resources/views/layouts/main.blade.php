@@ -13,7 +13,7 @@
     @yield('content')
   </div>
 
-  @include('layouts.footer')
+  @include('layouts._footer')
 @endsection
 
 @section('scripts')

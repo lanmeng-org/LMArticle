@@ -13,7 +13,7 @@ class Setting extends Model
 
     public static $whiteList = [
         'notice_show_home', 'notice_show_number', 'category_url_type', 'article_list_number',
-        'home_category_article_number', 'site_name',
+        'home_category_article_number', 'site_name', 'footer_content',
     ];
 
     public function contentArray()

@@ -69,6 +69,16 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <label for="footer_content" class="col-sm-2 control-label">页尾内容</label>
+    <div class="col-sm-10">
+      {{ Form::text('footer_content', null, [
+        'id' => 'footer_content',
+        'class' => 'form-control',
+      ]) }}
+    </div>
+  </div>
+
   <div class="box-footer text-center">
     <a href="{{ route('admin.setting.update') }}" class="btn btn-default">取消</a> &nbsp;
     <button type="submit" class="btn btn-success">提交</button>
