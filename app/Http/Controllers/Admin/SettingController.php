@@ -27,13 +27,13 @@ class SettingController extends Controller
         $insertArr = [];
 
         foreach ($data as $key => $item) {
-            $insertArr[] = [
+            $insertArr[$key] = [
                 'key' => $key,
                 'content' => $item,
             ];
         }
 
-        \DB::table('settings')->delete();
+        \DB::table('settings')->whereIn('key', array_keys($insertArr))->delete();
         \DB::table('settings')->insert($insertArr);
 
         return back();
