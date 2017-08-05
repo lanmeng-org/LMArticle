@@ -4,7 +4,7 @@
       <div class="panel-heading">
         {{ $category->display_name }}
         <div class="pull-right">
-          <a href="">查看更多</a>
+          <a href="{{ \App\Repositories\CategoryRepo::generateUrl($category) }}">查看更多</a>
         </div>
       </div>
       <div class="list-group">

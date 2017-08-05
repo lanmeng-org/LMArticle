@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-md-3">
-
+      @include('category._childCategories')
     </div>
   </div>
 @endsection

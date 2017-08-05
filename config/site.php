@@ -18,5 +18,9 @@ return [
         2 => '2/12',
         1 => '1/12'
     ],
+    'bootstrap_element_type' => [
+        'default', 'primary', 'success', 'info', 'warning', 'danger',
+    ],
+
 
 ];

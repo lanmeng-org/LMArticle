@@ -10,7 +10,7 @@ class CategoryRequest extends Request
     public function rules()
     {
         return [
-            'name'         => 'required|min:1',
+            'name'         => 'required|min:1|unique:categories,name',
             'display_name' => 'required|min:1',
             'order'        => 'required',
             'show_home'    => 'required',
@@ -52,7 +52,7 @@ class CategoryRequest extends Request
             return;
         }
 
-        $exists = Category::where('id', $parentId)->where('parent_id', '<>', 0)->exists();
+        $exists = Category::where('id', $parentId)->where('parent_id', 0)->exists();
 
         if (!$exists) {
             $this->failed('父分类不存在!');
