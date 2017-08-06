@@ -11,10 +11,10 @@
       </a>
     @endforeach
   </div>
-
-  @if($articles->lastPage() > 1)
-    <div class="pagination pull-right clearfix">
-      {{ $articles->links() }}
-    </div>
-  @endif
 </div>
+
+@if($articles->lastPage() > 1)
+  <div class="pagination">
+    {{ $articles->links() }}
+  </div>
+@endif
