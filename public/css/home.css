@@ -32,3 +32,7 @@ div.pagination {
   margin-top: 1rem;
 }
 
+.index-links a {
+  padding-right: .5rem;
+}
+

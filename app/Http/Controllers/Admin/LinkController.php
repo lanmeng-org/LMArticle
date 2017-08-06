@@ -9,7 +9,7 @@ class LinkController extends Controller
 {
     public function index()
     {
-        $links = Link::orderBy('created_at')->paginate(20);
+        $links = Link::orderBy('order')->paginate(20);
 
         return view('admin.link.index', [
             'data' => $links,
