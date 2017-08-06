@@ -37,6 +37,14 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
+        $positions = [];
+        foreach ([1,2,4] as $item) {
+            if ($article->position & $item) {
+                $positions[] = $item;
+            }
+        }
+        $article->position = $positions;
+
         return view('admin.article.form', [
             'data'       => $article,
             'categories' => $this->getCategories(),

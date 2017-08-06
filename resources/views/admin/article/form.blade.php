@@ -36,9 +36,15 @@
   <div class="form-group">
     <label for="category_id">推荐</label>
     <div>
-      <input type="checkbox" name="position[]" value="1" class="iCheck">&nbsp; 文章页推荐 &nbsp;
-      <input type="checkbox" name="position[]" value="2" class="iCheck">&nbsp; 栏目页推荐 &nbsp;
-      <input type="checkbox" name="position[]" value="4" class="iCheck">&nbsp; 全站页推荐 &nbsp;
+      {{ Form::checkbox('position[]', 1, null, [
+        'class' => 'iCheck',
+      ]) }}&nbsp; 文章页推荐 &nbsp;
+      {{ Form::checkbox('position[]', 2, null, [
+        'class' => 'iCheck',
+      ]) }}&nbsp; 栏目页推荐 &nbsp;
+      {{ Form::checkbox('position[]', 4, null, [
+        'class' => 'iCheck',
+      ]) }}&nbsp; 全站页推荐 &nbsp;
     </div>
   </div>
 
