@@ -26,6 +26,14 @@
   </div>
 
   <div class="form-group">
+    <label for="keywords">关键词</label>
+    {{ Form::text('keywords', null, [
+      'class' => 'form-control',
+      'id' => 'keywords',
+    ]) }}
+  </div>
+
+  <div class="form-group">
     <label for="category_id">分类</label>
     {{ Form::select('category_id', $categories, null, [
       'class' => 'form-control',

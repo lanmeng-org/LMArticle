@@ -16,8 +16,14 @@ class ArticleController extends BaseController
         ]
         + SeoUtils::getSeoArr(
             'article',
-            ['{$article.title$}'],
-            [$article->title]
+            [
+                '{$article.title$}',
+                '{$article.keywords$}',
+            ],
+            [
+                $article->title,
+                $article->keywords,
+            ]
         );
 
         return view('article.show', $data);

@@ -13,6 +13,9 @@
     <p>
       <span class="text-danger">{$article.title$}</span> 表示文章名称, 只可在文章页使用
     </p>
+    <p>
+      <span class="text-danger">{$article.keywords$}</span> 表示文章关键词, 只可在文章页使用
+    </p>
   </div>
 </div>
 
