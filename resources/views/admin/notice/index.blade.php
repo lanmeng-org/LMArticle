@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@section('title')
+  公告管理
+@endsection
+
 @section('pageHeader')
   <h2 class="page-header">
     公告管理

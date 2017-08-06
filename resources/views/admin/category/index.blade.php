@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@section('title')
+  分类管理
+@endsection
+
 @section('pageHeader')
   <h2 class="page-header">
     分类管理

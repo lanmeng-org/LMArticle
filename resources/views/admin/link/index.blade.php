@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@section('title')
+  友情链接管理
+@endsection
+
 @section('pageHeader')
   <h2 class="page-header">
     友情链接管理
