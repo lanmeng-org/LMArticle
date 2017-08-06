@@ -23,9 +23,7 @@ class CategoryController extends BaseController
             abort(404);
         }
 
-        $articles = Article::orderBy('created_at', 'desc')
-            ->where('category_id', $category->getKey())
-            ->paginate(setting('article_list_number'));
+        $articles = $this->getArticles($category);
 
         $data = compact('articles', 'category')
             + SeoUtils::getSeoArr(
@@ -35,5 +33,21 @@ class CategoryController extends BaseController
             );
 
         return view('category.show', $data);
+    }
+
+    protected function getArticles(Category $category)
+    {
+        $categoryIds = [
+            $category->getKey(),
+        ];
+        if (!$category->childCategory->isEmpty()) {
+            $categoryIds = array_merge($categoryIds, $category->childCategory->pluck('id')->toArray());
+        }
+
+        $articles = Article::orderBy('created_at', 'desc')
+            ->whereIn('category_id', $categoryIds)
+            ->paginate(setting('article_list_number'));
+
+        return $articles;
     }
 }
