@@ -1,18 +1,20 @@
 @extends('admin.layouts.main')
 
-@section('title')
-  分类管理
+@section('pageHeader')
+  <h2 class="page-header">
+    分类管理
+
+    <div class="pull-right">
+      <a href="{{ route('admin.category.create') }}" class="btn btn-info">新增分类</a>
+      <button type="button" class="btn btn-primary update-order">更新排序</button>
+    </div>
+  </h2>
 @endsection
 
 @section('content')
-  {{ Form::open([ 'route' => 'admin.category.sort' ]) }}
-  <div class="pull-right clearfix">
-    <a href="{{ route('admin.category.create') }}" class="btn btn-info">新增分类</a>
-    <button class="btn btn-primary">更新排序</button>
-  </div>
-
   @include('widgets.tips')
 
+  {{ Form::open(['route' => 'admin.category.sort', 'class' => 'update-other']) }}
   <table class="table table-condensed table-vertical-align-middle">
     <thead>
     <tr>
@@ -33,4 +35,13 @@
     </tbody>
   </table>
   {{ Form::close() }}
+@endsection
+
+@section('scripts')
+  @parent
+  <script>
+    $('.update-order').click(function () {
+      $('form.update-other').submit();
+    })
+  </script>
 @endsection

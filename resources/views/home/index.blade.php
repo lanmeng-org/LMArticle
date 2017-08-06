@@ -14,5 +14,6 @@
   <div class="row">
     @include('home._notices')
     @include('home._category_articles')
+    @include('home._links')
   </div>
 @endsection

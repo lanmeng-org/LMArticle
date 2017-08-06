@@ -16,6 +16,7 @@ Route::group([
     Route::post('category/sort', 'CategoryController@sort')->name('category.sort');
     Route::resource('article', 'ArticleController');
     Route::resource('notice', 'NoticeController');
+    Route::resource('link', 'LinkController');
 
     Route::get('setting', 'SettingController@edit')->name('setting.edit');
     Route::post('setting', 'SettingController@update')->name('setting.update');

@@ -1,14 +1,16 @@
 @extends('admin.layouts.main')
 
-@section('title')
-  公告管理
+@section('pageHeader')
+  <h2 class="page-header">
+    公告管理
+
+    <div class="pull-right">
+      <a href="{{ route('admin.notice.create') }}" class="btn btn-info">新增公告</a>
+    </div>
+  </h2>
 @endsection
 
 @section('content')
-  <div class="pull-right">
-    <a href="{{ route('admin.notice.create') }}" class="btn btn-info">新增公告</a>
-  </div>
-
   <table class="table table-condensed table-striped table-vertical-align-middle">
     <thead>
     <tr>

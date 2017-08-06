@@ -26,6 +26,9 @@
           <a href="{{ route('admin.notice.index') }}">公告管理</a>
         </li>
         <li>
+          <a href="{{ route('admin.link.index') }}">友情链接管理</a>
+        </li>
+        <li>
           <a href="{{ route('admin.setting.edit') }}">系统设置</a>
         </li>
       </ul>
