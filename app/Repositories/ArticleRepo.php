@@ -14,7 +14,9 @@ class ArticleRepo extends Repository
 
     public static function getList($category = null, $number = null)
     {
-        return self::articleQueryForCategory($category, $number)->get();
+        return self::articleQueryForCategory($category, $number)
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
 
     public static function getHotList($category = null, $number = null)
@@ -26,7 +28,8 @@ class ArticleRepo extends Repository
 
     public static function getPositionList($positions = [], $category = null, $number = null)
     {
-        $query = self::articleQueryForCategory($category, $number);
+        $query = self::articleQueryForCategory($category, $number)
+            ->orderBy('created_at', 'desc');
 
         foreach ($positions as $position) {
             $query->where('position', '&', $position);
@@ -37,7 +40,7 @@ class ArticleRepo extends Repository
 
     protected static function articleQueryForCategory($category, $number = null)
     {
-        $query = Article::orderBy('created_at', 'desc');
+        $query = Article::query();
 
         if (empty($number)) {
             $number = (int)setting('right_article_number');
