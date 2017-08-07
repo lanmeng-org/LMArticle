@@ -12,6 +12,7 @@
 
 @section('content')
   <div class="row">
+    @include('widgets.search_bar')
     @include('home._notices')
     @include('home._category_articles')
     @include('home._links')

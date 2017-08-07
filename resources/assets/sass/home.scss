@@ -33,3 +33,15 @@ div.pagination {
     padding-right: .5rem;
   }
 }
+
+.form-search-bar {
+  float: inherit;
+  padding: 10px 0 20px;
+}
+
+.article-list-empty {
+  text-align: center;
+  font-size: 20px;
+  color: red;
+  margin-bottom: 25px;
+}
