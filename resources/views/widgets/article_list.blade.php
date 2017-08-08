@@ -4,7 +4,7 @@
     @include('widgets.search_words')
   @else
     <div class="panel panel-default">
-      <div class="panel-heading"></div>
+      <div class="panel-heading">《{{ $words }}》相关内容</div>
       <div class="list-group">
         @foreach($articles as $item)
           <a href="{{ route('article.show', ['id' => $item->getKey()]) }}" class="list-group-item">
