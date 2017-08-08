@@ -11,6 +11,9 @@
 @endsection
 
 @section('content')
+
+  @include('widgets.search_bar')
+
   <ul class="breadcrumb">
     <li><a href="{{ url('/') }}">主页</a></li>
     <li class="active">公告</li>

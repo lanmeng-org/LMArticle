@@ -11,6 +11,8 @@
 @endsection
 
 @section('content')
+  @include('widgets.search_bar')
+
   @include('article._breadcrumb')
 
   <div class="row">

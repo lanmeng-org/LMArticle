@@ -11,8 +11,9 @@
 @endsection
 
 @section('content')
-  @include('notice._breadcrumb')
+  @include('widgets.search_bar')
 
+  @include('notice._breadcrumb')
 
   <div class="row">
     <div class="col-md-9">
