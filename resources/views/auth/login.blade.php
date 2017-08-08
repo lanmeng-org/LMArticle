@@ -6,6 +6,7 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('vendor/bootstrap/cerulean/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @endsection
 
 @section('body')
@@ -46,6 +47,27 @@
                 </div>
               </div>
 
+              <div class="form-group{{ $errors->has('verify') ? ' has-error' : '' }}">
+                <label for="verify" class="col-md-4 control-label">验证码</label>
+
+                <div class="col-md-6">
+                  <input id="verify" type="text" class="form-control" name="verify" required>
+
+                  @if($errors->has('verify'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('verify') }}</strong>
+                    </span>
+                  @endif
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-4"></div>
+                <div class="col-md-6">
+                  <img src="{{ captcha_src() }}" id="verify-image">
+                </div>
+              </div>
+
               <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                   <div class="checkbox">
@@ -83,6 +105,10 @@
 
       resize();
       $(window).resize(resize);
+
+      $('#verify-image').click(function () {
+        $(this).attr('src', $(this).attr('src') + Math.random())
+      })
     });
   </script>
 @endsection
