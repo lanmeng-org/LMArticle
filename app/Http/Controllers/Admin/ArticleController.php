@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\ArticleRequest;
 use App\Models\Article;
 use App\Models\Category;
+use Lanmeng\Qiu5\SeoUtils;
 
 class ArticleController extends Controller
 {
@@ -26,11 +27,7 @@ class ArticleController extends Controller
 
     public function store(ArticleRequest $request)
     {
-        $data = $request->all();
-        if (isset($data['position'])) {
-            $data['position'] = array_sum($data['position']);
-        }
-        Article::create($data);
+        Article::create($request->getParams());
 
         return redirect()->route('admin.article.index');
     }
@@ -53,11 +50,7 @@ class ArticleController extends Controller
 
     public function update(Article $article, ArticleRequest $request)
     {
-        $data = $request->all();
-        if (isset($data['position'])) {
-            $data['position'] = array_sum($data['position']);
-        }
-        $article->update($data);
+        $article->update($request->getParams());
 
         return redirect()->route('admin.article.index');
     }

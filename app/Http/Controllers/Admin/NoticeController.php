@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\NoticeRequest;
 use App\Models\Notice;
+use Lanmeng\Qiu5\SeoUtils;
 
 class NoticeController extends Controller
 {
@@ -23,7 +24,7 @@ class NoticeController extends Controller
 
     public function store(NoticeRequest $request)
     {
-        Notice::create($request->all());
+        Notice::create($request->getParams());
 
         return redirect()->route('admin.notice.index');
     }
@@ -37,7 +38,7 @@ class NoticeController extends Controller
 
     public function update(Notice $notice, NoticeRequest $request)
     {
-        $notice->update($request->all());
+        $notice->update($request->getParams());
 
         return redirect()->route('admin.notice.index');
     }

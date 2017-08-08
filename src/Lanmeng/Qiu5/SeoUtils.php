@@ -2,6 +2,8 @@
 
 namespace Lanmeng\Qiu5;
 
+use App\Repositories\SettingRepo;
+
 class SeoUtils
 {
     /**
@@ -23,5 +25,30 @@ class SeoUtils
         }, $arr);
 
         return $arr;
+    }
+
+    public static function keywordsReplace($string)
+    {
+        $keywords = SettingRepo::getItemContentArray('article_keywords_replace');
+
+        if (empty($keywords)) {
+            return $string;
+        }
+
+        $searchWords = [];
+        $replaceWords = [];
+
+        foreach ($keywords as $key => $keyword) {
+            $replaces = explode('<==>', $keyword);
+            if (count($replaces) != 2) {
+                unset($keywords[$key]);
+                continue;
+            }
+
+            $searchWords[] = $replaces[0];
+            $replaceWords[] = $replaces[1];
+        }
+
+        return str_replace($searchWords, $replaceWords, $string);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Request;
 use App\Models\Category;
+use Lanmeng\Qiu5\SeoUtils;
 
 class ArticleRequest extends Request
 {
@@ -38,5 +39,15 @@ class ArticleRequest extends Request
     public function validate()
     {
         $this->rulesValidate();
+    }
+
+    public function getParams()
+    {
+        $data = $this->all();
+        $data['position'] = isset($data['position']) ? array_sum($data['position']) : 0;
+        $data['content'] = SeoUtils::keywordsReplace($data['content']);
+        $data['title'] = SeoUtils::keywordsReplace($data['title']);
+
+        return $data;
     }
 }

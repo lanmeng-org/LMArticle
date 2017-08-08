@@ -88,3 +88,19 @@
     ]) }}
   </div>
 </div>
+
+<div class="form-group">
+  <label for="article_keywords_replace" class="col-sm-2 control-label">关键词替换</label>
+  <div class="col-sm-10">
+    {{ Form::textarea('article_keywords_replace', null, [
+      'id' => 'article_keywords_replace',
+      'class' => 'form-control',
+      'rows' => 3,
+      'placeholder' => "替换前1<==>替换后1\n替换前2<==>替换后2",
+    ]) }}
+    <p class="help-block">
+      文章 公告 发布时标题与内容会自动进行替换,每行一对替换关键词, 内容示例:
+      <span class="text-danger">替换前<==>替换后</span>
+    </p>
+  </div>
+</div>

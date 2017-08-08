@@ -22,4 +22,11 @@ class SettingRepo extends Repository
 
         return $setting ? $setting->content : null;
     }
+
+    public static function getItemContentArray($key)
+    {
+        $setting = self::getItem($key);
+
+        return $setting ? $setting->contentArray() : null;
+    }
 }

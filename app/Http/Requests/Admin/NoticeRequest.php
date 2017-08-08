@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Request;
 use App\Models\Category;
+use Lanmeng\Qiu5\SeoUtils;
 
 class NoticeRequest extends Request
 {
@@ -34,5 +35,14 @@ class NoticeRequest extends Request
     public function validate()
     {
         $this->rulesValidate();
+    }
+
+    public function getParams()
+    {
+        $data = $this->all();
+        $data['content'] = SeoUtils::keywordsReplace($data['content']);
+        $data['title'] = SeoUtils::keywordsReplace($data['title']);
+
+        return $data;
     }
 }
