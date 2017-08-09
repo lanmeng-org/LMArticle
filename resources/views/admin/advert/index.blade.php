@@ -18,6 +18,7 @@
     <thead>
     <tr>
       <th>广告名称</th>
+      <th>状态</th>
       <th width="150">发布时间</th>
       <th width="150">更新时间</th>
       <th width="140">操作</th>
@@ -27,6 +28,7 @@
       @foreach($data as $item)
         <tr>
           <td>{{ $item->name }}</td>
+          <td>{{ $item->status ? '启用' : '禁用' }}</td>
           <td>{{ $item->created_at }}</td>
           <td>{{ $item->updated_at }}</td>
           <td>
