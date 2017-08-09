@@ -13,7 +13,7 @@ class AdvertRepo extends Repository
 
     public static function getItem($name)
     {
-        return Advert::where('name', $name)->first();
+        return Advert::where('name', $name)->where('status', 1)->first();
     }
 
     public static function getItemContent($name)

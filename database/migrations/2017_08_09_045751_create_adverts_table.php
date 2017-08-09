@@ -17,9 +17,11 @@ class CreateAdvertsTable extends Migration
             $table->increments('id');
             $table->string('name')->comment('广告标识');
             $table->text('content')->nullable()->comment('广告代码');
+            $table->boolean('status')->default(1)->comment('状态 0:禁用 1:启用');
             $table->timestamps();
 
             $table->unique('name');
+            $table->index('status');
         });
     }
 

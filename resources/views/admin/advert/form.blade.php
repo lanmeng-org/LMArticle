@@ -26,6 +26,14 @@
   </div>
 
   <div class="form-group">
+    <label for="status">是否启用</label>
+    {{ Form::select('status', ['禁用', '启用'], null, [
+      'class' => 'form-control',
+      'id' => 'status',
+    ]) }}
+  </div>
+
+  <div class="form-group">
     <label for="content">广告内容</label>
     {{ Form::textarea('content', null, [
       'class' => 'form-control',
