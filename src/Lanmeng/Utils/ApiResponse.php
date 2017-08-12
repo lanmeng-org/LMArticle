@@ -1,20 +1,12 @@
 <?php
+
 namespace Lanmeng\Utils;
 
 use Illuminate\Http\Response;
 
 class ApiResponse
 {
-    protected $additional = [];
-
     protected $header = [];
-
-    public function setAdditional($additional)
-    {
-        $this->additional = $additional;
-
-        return $this;
-    }
 
     public function setHeader(array $header)
     {
@@ -23,29 +15,24 @@ class ApiResponse
         return $this;
     }
 
-    protected function prepareContent($code, $msg, $data)
+    protected function errorContent($code, $msg, array $data = [])
     {
         $content = [
-            'code' => $code,
             'msg'  => $msg,
-            'data' => $data,
-        ] + $this->additional;
+        ] + $data;
 
-        return $content;
+        return new Response($content, $code, $this->header);
     }
 
     /**
      * 200 Ok
      * 请求已成功，请求所希望的响应头或数据体将随此响应返回。
      * @param null   $data
-     * @param string $msg
      * @return Response
      */
-    public function success200($data = null, $msg = '成功')
+    public function success200($data = '')
     {
-        $content = $this->prepareContent(200, $msg, $data);
-
-        return new Response($content, 200, $this->header);
+        return new Response($data, 200, $this->header);
     }
 
     /**
@@ -56,11 +43,9 @@ class ApiResponse
      * @param null $data
      * @return Response
      */
-    public function error400($msg, $data = null)
+    public function error400($msg, array $data = [])
     {
-        $content = $this->prepareContent(400, $msg, $data);
-
-        return new Response($content, 400, $this->header);
+        return $this->errorContent(400, $msg, $data);
     }
 
     /**
@@ -70,11 +55,9 @@ class ApiResponse
      * @param null $data
      * @return Response
      */
-    public function error403($msg, $data = null)
+    public function error403($msg, array $data = [])
     {
-        $content = $this->prepareContent(400, $msg, $data);
-
-        return new Response($content, 400, $this->header);
+        return $this->errorContent(403, $msg, $data);
     }
 
     /**
@@ -85,10 +68,8 @@ class ApiResponse
      * @param null $data
      * @return Response
      */
-    public function error500($msg, $data = null)
+    public function error500($msg, array $data = [])
     {
-        $content = $this->prepareContent(500, $msg, $data);
-
-        return new Response($content, 500, $this->header);
+        return $this->errorContent(500, $msg, $data);
     }
 }

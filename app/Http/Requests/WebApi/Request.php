@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Requests\WebApi;
 
-use Bigecko\Utils\ApiResponse;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
+use Lanmeng\Utils\ApiResponse;
 
 class Request extends FormRequest
 {
@@ -12,7 +12,6 @@ class Request extends FormRequest
         $apiResponse = new ApiResponse();
         $params = [
             'msg' => $msg,
-            'data' => null,
         ];
         $response = call_user_func_array([$apiResponse, "error$code"], $params);
 
