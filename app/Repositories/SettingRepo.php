@@ -13,7 +13,11 @@ class SettingRepo extends Repository
 
     public static function getItem($key)
     {
-        return Setting::where('key', $key)->first();
+        $item = \Cache::remember("setting.items.$key", config('site.cache.minutes'), function () use ($key) {
+            return Setting::where('key', $key)->first();
+        });
+
+        return $item;
     }
 
     public static function getItemContent($key)

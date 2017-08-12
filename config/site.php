@@ -21,5 +21,9 @@ return [
         'default', 'primary', 'success', 'info', 'warning', 'danger',
     ],
 
+    'cache' => [
+        // 缓存有效时间(分钟)
+        'minutes' => 60,
+    ],
 
 ];

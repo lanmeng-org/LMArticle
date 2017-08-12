@@ -24,3 +24,10 @@ if (!function_exists('setting')) {
         return \App\Repositories\SettingRepo::getItemContent($key);
     }
 }
+
+if (!function_exists('advert')) {
+    function advert($name)
+    {
+        return \App\Repositories\AdvertRepo::getItemContent($name);
+    }
+}

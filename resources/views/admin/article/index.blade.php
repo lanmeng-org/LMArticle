@@ -8,9 +8,9 @@
   <h2 class="page-header">
     文章管理
 
-    <div class="pull-right">
+    <span class="pull-right">
       <a href="{{ route('admin.article.create') }}" class="btn btn-info">新增文章</a>
-    </div>
+    </span>
   </h2>
 @endsection
 

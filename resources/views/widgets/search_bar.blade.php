@@ -7,4 +7,6 @@
         </span>
     </div>
   </form>
+
+  {{ advert('全站搜索栏下方') }}
 </div>
