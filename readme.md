@@ -14,8 +14,7 @@ composer install
 
 编辑 `.env` 配置数据库信息
 
-执行 `./artisan migrate`
-
+执行 `./artisan migrate` 迁移数据库信息
 
 ### 默认信息
 *默认后台地址*
