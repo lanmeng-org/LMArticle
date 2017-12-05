@@ -10,9 +10,12 @@ class StringUtil
      *
      * @return string
      */
-    public static function createSerialNo($id = 0, $len = 32)
+    public static function createSerialNo($len = 32, $id = null)
     {
-        $str = date('ymd').substr(microtime(), 2, 6).(int)$id;
+        $str = date('md').substr(microtime(), 2, 6);
+        if ($id) {
+            $str .= $id;
+        }
         $ilen = $len - strlen($str);
 
         if ($ilen > 0) {
@@ -33,14 +36,15 @@ class StringUtil
     {
         $number = '';
         do {
-            $number .= rand();
+            mt_srand();
+            $number .= mt_rand();
         } while (strlen($number) < $len);
 
         if (strlen($number) > $len) {
             $number = substr($number, 0, $len);
         }
 
-        return (int)$number;
+        return $number;
     }
 
     /**

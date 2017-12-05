@@ -24,12 +24,10 @@ class FileUtil
         }
 
         $real_path = public_path($path). DIRECTORY_SEPARATOR. $sub_path;
-        if (!file_exists($real_path)) {
-            mkdir($real_path, 0766, true);
-        }
+        self::makeDirectory($real_path);
 
         if (empty($file_name)) {
-            $file_name = md5(uniqid(). $file->getBasename()). '.'. $file->extension();
+            $file_name = uniqid(). "{$file->getBasename()}.{$file->extension()}";
         }
 
         $file->move($real_path, $file_name);
@@ -54,5 +52,55 @@ class FileUtil
         }
 
         return null;
+    }
+
+    public static function makeDirectory($path, $mode = 0777, $recursive = true)
+    {
+        if (file_exists($path)) {
+            return true;
+        }
+
+        try {
+            return mkdir($path, $mode, $recursive);
+        } catch (\Exception $err) {
+            \Log::error($err->getMessage());
+            return false;
+        }
+    }
+
+    public static function downloadFile($url, $path, $sub_path = null, $file_name = null)
+    {
+        if (empty($url)) {
+            return false;
+        }
+
+        if (empty($sub_path)) {
+            $sub_path = date('Y');
+        }
+
+        $path = $path. DIRECTORY_SEPARATOR. $sub_path;
+        $real_path = public_path($path);
+        self::makeDirectory($real_path);
+
+        if (empty($file_name)) {
+            $file_name = uniqid();
+        }
+
+        $res = (new \GuzzleHttp\Client())->request('get', $url);
+        if ($res->getStatusCode() != 200) {
+            \Log::error("$url 下载失败");
+            return '';
+        }
+
+        try {
+            $file = fopen($real_path. DIRECTORY_SEPARATOR. $file_name, 'w');
+            fwrite($file, $res->getBody());
+            fclose($file);
+        } catch (\Exception $err) {
+            \Log::error($err->getMessage());
+            return null;
+        }
+
+        return $path. DIRECTORY_SEPARATOR. $file_name;
     }
 }
