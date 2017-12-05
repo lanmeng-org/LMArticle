@@ -25,3 +25,7 @@ composer install
 
 *默认密码*
 `lanmeng.org`
+
+### 案例
+- http://www.qiu5.cc
+- http://www.lzpian.com
