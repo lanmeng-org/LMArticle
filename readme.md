@@ -8,11 +8,12 @@
 
 执行
 ```
+git clone git@github.com:lanmeng-org/LMArticle.git
 cd LMArticle
 composer install
 ```
 
-编辑 `.env` 配置数据库信息
+编辑 `.env` 配置数据库等相关信息
 
 执行 `./artisan migrate` 迁移数据库信息
 
