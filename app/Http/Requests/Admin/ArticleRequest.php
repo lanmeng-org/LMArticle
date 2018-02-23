@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Request;
 use App\Models\Category;
-use Lanmeng\Qiu5\SeoUtils;
+use Lanmeng\LMArticle\SeoUtils;
 
 class ArticleRequest extends Request
 {

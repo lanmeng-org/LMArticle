@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\NoticeRequest;
 use App\Models\Notice;
-use Lanmeng\Qiu5\SeoUtils;
+use Lanmeng\LMArticle\SeoUtils;
 
 class NoticeController extends Controller
 {

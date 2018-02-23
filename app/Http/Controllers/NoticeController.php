@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notice;
-use Lanmeng\Qiu5\SeoUtils;
+use Lanmeng\LMArticle\SeoUtils;
 
 class NoticeController extends BaseController
 {

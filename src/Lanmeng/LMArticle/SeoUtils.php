@@ -1,6 +1,6 @@
 <?php
 
-namespace Lanmeng\Qiu5;
+namespace Lanmeng\LMArticle;
 
 use App\Repositories\SettingRepo;
 

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Http\Requests\Request;
 use App\Models\Category;
 use Illuminate\Validation\Rule;
-use Lanmeng\Qiu5\SeoUtils;
+use Lanmeng\LMArticle\SeoUtils;
 
 class AdvertRequest extends Request
 {

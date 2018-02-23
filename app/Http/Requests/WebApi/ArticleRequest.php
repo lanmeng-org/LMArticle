@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\WebApi;
 
-use Lanmeng\Qiu5\SeoUtils;
+use Lanmeng\LMArticle\SeoUtils;
 
 class ArticleRequest extends Request
 {
